@@ -6,7 +6,7 @@
           <!-- v-bind로 할 경우 한글 마지막 글자가 출력이 안됨 -->
           <input
             :value="txtData"
-            @input="[txtData = $event.target.value,sendTxt()]"
+            @input="[txtData = $event.target.value]"
             type="text"
             placeholder="텍스트를 입력해주세요"
           />
@@ -41,8 +41,6 @@ export default {
   methods: {
     mixText(data) {
       this.txtData = data.slice(1) + data.slice(0, 1);
-    },
-    sendTxt() {
     },
   },
 };
