@@ -3,7 +3,7 @@
     <img alt='Vue logo' src='../assets/logo.png' />
     <HelloWorld msg='Welcome to Your Vue.js App' />
     <RotationInput @sendTxt='receiveTxt' :init-txt-data='txtData'></RotationInput>
-    <AlertItem ref='alert' :init-txt-data='txtData'></AlertItem>
+    <AlertItem :init-txt-data='txtData'></AlertItem>
   </div>
 </template>
 
@@ -19,7 +19,6 @@ export default {
     HelloWorld,
     AlertItem,
   },
-
   data() {
     return {
       txtData: '',

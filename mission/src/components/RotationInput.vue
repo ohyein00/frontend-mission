@@ -3,7 +3,6 @@
     <div class="input_area">
       <form>
         <label>
-          <!-- v-bind로 할 경우 한글 마지막 글자가 출력이 안됨 -->
           <input
             :value="txtData"
             @input="[txtData = $event.target.value]"

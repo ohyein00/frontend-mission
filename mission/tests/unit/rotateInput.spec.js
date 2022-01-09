@@ -5,6 +5,7 @@ import AlertItem from '@/components/AlertItem.vue';
 // test 1 : 입력한 데이터가 p태그 안에 동일하게 출력되야함
 // test 2 : 버튼 클릭시 메소드 실행 후 글자 로테이트
 // test 3 : Alert 버튼 클릭시 누른 횟수 카운트
+
 // #1
 test('Match data', () => {
   const txtData = '텍스트';
@@ -14,6 +15,8 @@ test('Match data', () => {
   const resultTxt = wrapper.find('#resultTxt');
   const input = wrapper.find('input');
   expect(input.element.value).toBe(resultTxt.text());
+  expect(input.element.value).toBe('텍스트');
+  expect(resultTxt.text()).toBe('텍스트');
 });
 
 // #2
