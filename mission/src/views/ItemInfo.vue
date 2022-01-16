@@ -6,7 +6,6 @@
           <div class="slide-container">
             <ul>
               <li v-for="(url,i) in itemInfo.coverImgUrl" :key="`img_${i}`"
-                  v-bind="slide(event)"
                   class='slide-item'>
                 <figure v-bind:style="{backgroundImage:`url(${url})`}"/>
               </li>
@@ -30,13 +29,15 @@
         <section class="item-info-sec">
           <h3 data-test="item-title" class="item-title">{{ itemInfo.title }}</h3>
           <div :class="checkDiscount(itemInfo.discount)" class="price-area">
+            <!-- no-discount 일 경우 하단 p태그 display:none 처리됨 -->
             <p data-test="item-before-price" class="before-price">
-          <span data-test="item-discount" class="rate">
-            {{ itemInfo.discount }}<small>%</small>
-          </span>
+              <span data-test="item-discount" class="rate">
+                {{ itemInfo.discount }}<small>%</small>
+              </span>
               <span class="price"><b>{{ itemInfo.price }}</b>원</span>
             </p>
             <p data-test="item-after-price" class="after-price">
+              <!-- 최종금액 -->
               <b class="num">{{ itemPriceResult }}</b>원</p>
           </div>
         </section>
@@ -46,6 +47,7 @@
           <div class="desc-area">
             <div class="desc-frame" v-for="(desc,i) in itemInfo.desc.contents"
                  :key="`desc_${i}`">
+              <!-- HTML 출력 -->
               <div v-html="desc" class="desc"></div>
             </div>
           </div>
@@ -75,7 +77,7 @@
           </p>
           <div class="btn-area">
             <button>
-              <font-awesome-icon icon="shopping-cart"/>
+              <font-awesome-icon icon="shopping-cart" data-test="font-awesome"/>
             </button>
             <button class="buy-button">구매하기</button>
           </div>
@@ -104,7 +106,7 @@ export default {
           tag: [],
         },
         title: undefined,
-        price: undefined,
+        price: 0,
         discount: undefined,
         coverImgUrl: undefined,
         desc: {
@@ -131,16 +133,18 @@ export default {
   },
   methods: {
     getItemData() {
-      // eslint-disable-next-line consistent-return
-      axios.get('http://localhost:10004/itemInfo').then((response) => {
-        // const itemData = response.data[0];
-        this.itemInfo = response.data;
-      })
-        .then(() => {
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      axios.get('http://localhost:10000/itemInfo').then((response) => {
+        this.itemInfo.id = response.data.id;
+        this.itemInfo.seller = response.data.seller;
+        this.itemInfo.title = response.data.title;
+        this.itemInfo.price = response.data.price;
+        this.itemInfo.discount = response.data.discount;
+        this.itemInfo.coverImgUrl = response.data.coverImgUrl;
+        this.itemInfo.desc = response.data.desc;
+        this.itemInfo.reviews = response.data.reviews;
+      }).catch((error) => {
+        console.log(error);
+      });
     },
     checkDiscount(discount) {
       if (discount > 0) {
@@ -151,14 +155,13 @@ export default {
 
   },
   mounted() {
-    this.$nextTick(() => {
-    });
   },
 };
 
 </script>
 
 <style lang="scss" scoped>
+$gray_1 : #e7e7e7;
 #wrapper {
   position: relative;
   width: 100%;
@@ -175,7 +178,7 @@ export default {
 }
 
 section {
-  border-top: 1px solid #e7e7e7;
+  border-top: 1px solid $gray_1;
   padding: 15px 15px 0;
 }
 
@@ -226,8 +229,8 @@ section {
     height: 35px;
     border-radius: 100%;
     background-size: cover;
-    background-color: #e7e7e7;
-    border: 1px solid #e7e7e7
+    background-color: $gray_1;
+    border: 1px solid $gray_1
   }
 
   .txt-area {
@@ -318,7 +321,7 @@ section {
     justify-content: space-between;
     align-items: stretch;
     padding: 15px 12px;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid $gray_1;
     margin-bottom: 20px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     border-radius: 15px;

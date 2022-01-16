@@ -32,20 +32,13 @@ describe('ItemInfoPage', () => {
     const sellerTag = wrapper.findAll('[data-test="seller-tag"]');
     expect(sellerTag).toHaveLength(3);
   });
-  it('discount 수치가 0이상이면 할인율과 할인된 가격이 표시됨', async () => {
-    const price = 10000;
-    const discount = 10;
-    await wrapper.setData({ itemInfo: { discount, price } });
-    expect(wrapper.text()).toContain('10%');
-    expect(wrapper.text()).toContain('9000원');
-  });
   it('리뷰가 존재하면 배열의 갯수만큼 리뷰가 출력됨', async () => {
     await wrapper.setData({
       itemInfo: {
         reviews: [{
-          userName: undefined,
-          contents: undefined,
-          photo: undefined,
+          userName: '11',
+          text: '11',
+          photo: '11',
         }],
       },
     });
@@ -57,5 +50,12 @@ describe('ItemInfoPage', () => {
     expect(reviewName).toHaveLength(1);
     expect(reviewPhoto).toHaveLength(1);
     expect(reviewText).toHaveLength(1);
+  });
+  it('discount 수치가 0이상이면 할인율과 할인된 가격이 표시됨', async () => {
+    const price = 10000;
+    const discount = 10;
+    await wrapper.setData({ itemInfo: { discount, price } });
+    expect(wrapper.text()).toContain('10%');
+    expect(wrapper.text()).toContain('9000원');
   });
 });
