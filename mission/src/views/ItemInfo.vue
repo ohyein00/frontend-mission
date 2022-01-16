@@ -56,7 +56,8 @@
           <h5 class="sec-title">
             상품리뷰
           </h5>
-          <article data-test="item-review" v-if="itemInfo.reviews"
+          <template v-if="itemInfo.reviews">
+          <article data-test="item-review"
                    v-for="(review,i) in itemInfo.reviews" :key="`review_${i}`" class="item-review">
             <div class="txt-area">
               <small data-test="item-review-name">작성자 : {{ review.userName }}</small>
@@ -69,10 +70,10 @@
               <p v-else class="no-data">NO PHOTO</p>
             </div>
           </article>
-          <div v-else class="no-data">
-          <p>작성된 리뷰가 없습니다.</p>
-          </div>
+          </template>
+          <div v-else class="no-data"></div>
         </section>
+
       </div>
       <div class="page-foot">
         <div class="cart-bar">
