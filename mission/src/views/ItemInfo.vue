@@ -56,7 +56,7 @@
           <h5 class="sec-title">
             상품리뷰
           </h5>
-          <article data-test="item-review"
+          <article data-test="item-review" v-if="itemInfo.reviews"
                    v-for="(review,i) in itemInfo.reviews" :key="`review_${i}`" class="item-review">
             <div class="txt-area">
               <small data-test="item-review-name">작성자 : {{ review.userName }}</small>
@@ -64,9 +64,14 @@
               <p data-test="item-review-text" class="contents">{{ review.text }}</p>
             </div>
             <div class="img-area">
-              <img :src="review.photo" data-test="item-review-photo" alt="리뷰이미지">
+              <img v-if="review.photo" :src="review.photo" class="no-data"
+                   data-test="item-review-photo" alt="리뷰이미지"/>
+              <p v-else class="no-data">NO PHOTO</p>
             </div>
           </article>
+          <div v-else class="no-data">
+          <p>작성된 리뷰가 없습니다.</p>
+          </div>
         </section>
       </div>
       <div class="page-foot">
@@ -316,6 +321,12 @@ section {
 }
 
 .item-review-sec {
+  div.no-data{
+    text-align:center;
+    color:#666;
+    padding:20px 0;
+    width:100%;
+  }
   .item-review {
     display: flex;
     justify-content: space-between;
@@ -327,13 +338,21 @@ section {
     border-radius: 15px;
 
     .img-area {
+      display:flex;
+      align-items: center;
       flex-basis: 30%;
       flex-shrink: 0;
-
+      background:#e7e7e7;
+      border-radius: 15px;
       img {
         border-radius: 10px;
         display: block;
         width: 100%;
+      }
+      p{
+        width:100%;
+        text-align:center;
+        font-size:12px;
       }
     }
 
