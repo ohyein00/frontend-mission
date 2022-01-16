@@ -23,6 +23,10 @@ describe('ItemInfoPage', () => {
     expect(itemPrice.exists()).toBe(true);
     expect(itemDesc.exists()).toBe(true);
   });
+  it('폰트어썸 확인', () => {
+    const icon = wrapper.find('[data-test="font-awesome"]');
+    expect(icon.exists()).toBe(true);
+  });
   it('판매자 태그 정보가 존재하면 배열의 갯수만큼 태그가 출력됨', async () => {
     await wrapper.setData({ itemInfo: { seller: { tag: ['test1', 'test2', 'test3'] } } });
     const sellerTag = wrapper.findAll('[data-test="seller-tag"]');
