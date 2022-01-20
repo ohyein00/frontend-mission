@@ -73,7 +73,6 @@
           </template>
           <div v-else class="no-data"></div>
         </section>
-
       </div>
       <div class="page-foot">
         <div class="cart-bar">
@@ -83,7 +82,7 @@
           </p>
           <div class="btn-area">
             <button>
-              <font-awesome-icon icon="shopping-cart" data-test="font-awesome"/>
+              <font-awesome-icon icon="shopping-cart"/>
             </button>
             <button class="buy-button">구매하기</button>
           </div>
@@ -167,7 +166,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$gray_1 : #e7e7e7;
 #wrapper {
   position: relative;
   width: 100%;

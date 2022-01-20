@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
-import RotationInput from '@/components/RotationInput.vue';
-import AlertItem from '@/components/AlertItem.vue';
+import HelloWorld from '@/components/tutorial/HelloWorld.vue';
+import RotationInput from '@/components/tutorial/RotationInput.vue';
+import AlertItem from '@/components/tutorial/AlertItem.vue';
 
 export default {
   name: 'Home',
