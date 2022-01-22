@@ -17,12 +17,10 @@ describe('ItemInfoPage', () => {
     const sellerIcon = wrapper.get('[data-test="seller-icon"]');
     const sellerName = wrapper.get('[data-test="seller-name"]');
     const itemTitle = wrapper.get('[data-test="item-title"]');
-    const itemPrice = wrapper.get('[data-test="item-before-price"]');
     const itemDesc = wrapper.get('[data-test="item-desc"]');
     expect(sellerIcon.exists()).toBe(true);
     expect(sellerName.exists()).toBe(true);
     expect(itemTitle.exists()).toBe(true);
-    expect(itemPrice.exists()).toBe(true);
     expect(itemDesc.exists()).toBe(true);
   });
   it('판매자 태그 정보가 존재하면 배열의 갯수만큼 태그가 출력됨', async () => {

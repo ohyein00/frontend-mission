@@ -1,6 +1,6 @@
 <template>
   <div class='home'>
-    <img alt='Vue logo' src='../assets/logo.png' />
+    <img alt='Vue logo' src='src/assets/logo.png' />
     <HelloWorld msg='Welcome to Your Vue.js App' />
     <RotationInput @sendTxt='receiveTxt' :init-txt-data='txtData'></RotationInput>
     <AlertItem :init-txt-data='txtData'></AlertItem>

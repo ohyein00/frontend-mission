@@ -17,26 +17,28 @@ describe('layout', () => {
   });
 });
 describe('ItemListPage', () => {
-  const items = [
+  const itemList = [
     {
       title: '아이템1',
       thumbNailUrl: 'root2',
       likes: 0,
       price: 1000,
+      discount: 10,
     },
     {
       title: '아이템2',
       thumbNailUrl: 'root2',
       likes: 0,
       price: 2000,
+      discount: 5,
     },
   ];
 
   beforeEach(() => {
     wrapper = mount(ItemListPage, {
-      data() {
+      setup() {
         return {
-          items,
+          itemList,
         };
       },
     });
@@ -48,7 +50,7 @@ describe('ItemListPage', () => {
 
   it('render an item length according to the number of data.', () => {
     const itemComponents = wrapper.findAll('[data-test="item-component"]');
-    expect(itemComponents).toHaveLength(items.length);
+    expect(itemComponents).toHaveLength(itemList.length);
   });
 
   /*
@@ -59,10 +61,10 @@ describe('ItemListPage', () => {
     const ItemListItems = wrapper.findAll('[data-test="item-component"]');
     for (let i = 0; i < ItemListItems.length; i += 1) {
       const itemComponentImg = ItemListItems[i].find(['img']);
-      expect(itemComponentImg.attributes().src).toEqual(items[i].thumbNailUrl);
-      expect(ItemListItems[i].text()).toContain(items[i].title);
-      expect(ItemListItems[i].text()).toContain(items[i].likes);
-      expect(ItemListItems[i].text()).toContain(items[i].price);
+      expect(itemComponentImg.attributes().src).toEqual(itemList[i].thumbNailUrl);
+      expect(ItemListItems[i].text()).toContain(itemList[i].title);
+      expect(ItemListItems[i].text()).toContain(itemList[i].likes);
+      expect(ItemListItems[i].text()).toContain(itemList[i].price);
     }
   });
 });
