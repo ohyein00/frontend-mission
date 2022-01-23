@@ -3,7 +3,7 @@
     <h1 class="logo">
       <Logo/>
     </h1>
-
+    <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
   </header>
 </template>
 
@@ -14,10 +14,6 @@ export default {
   name: 'Header',
   components: {
     Logo,
-  },
-  setup() {
-    return {
-    };
   },
 };
 </script>

@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils';
 import axios from 'axios';
 import ItemListPage from '@/views/ItemList.vue';
 import App from '@/App.vue';
-import { axiosData, mapData } from '@/composables/getItemData';
+import { axiosData, mapData } from '@/composables/getItemRef';
 
 let wrapper;
 jest.mock('axios');
@@ -56,11 +56,11 @@ describe('ItemListPage', () => {
     expect(itemComponents).toHaveLength(itemList.length);
   });
   it('axios data api and map', () => {
-    const users = [{ item: 'shirt', likes: 10 }];
-    const response = { data: users };
+    const itemData = [{ item: 'shirt', likes: 10 }];
+    const response = { data: itemData };
     axios.get.mockResolvedValue(response);
     axiosData().then((data) => {
-      expect(data).toEqual(users);
+      expect(data).toEqual(itemData);
       expect(mapData(data, ['item'])).toEqual([{ item: 'shirt' }]);
     });
   });

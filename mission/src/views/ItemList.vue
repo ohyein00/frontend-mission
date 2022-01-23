@@ -25,7 +25,7 @@
 import ItemComponent from '@/components/ItemList/Item.vue';
 
 import Navigation from '@/components/layouts/Navigation.vue';
-import getItemRef from '@/composables/getItemData';
+import getItemRef from '@/composables/getItemRef';
 
 export default {
   name: 'ItemListPage',
@@ -51,7 +51,7 @@ export default {
   padding:20px;
 }
 #item-list-page{
-  padding-bottom:60px;
+  padding-bottom:20px;
 }
   .item-group{
     display:flex;

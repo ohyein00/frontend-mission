@@ -9,11 +9,16 @@ export default {
   name: 'Footer',
 };
 </script>
-<style>
-
-footer{
-  padding:30px 10px;
+<style scoped>
+footer {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 30px 10px;
   background: #efefef;
-  font-size:12px;
+  font-size: 12px;
+}
+
+.nav-wrapper ~ footer {
+  margin-bottom: 57px;
 }
 </style>

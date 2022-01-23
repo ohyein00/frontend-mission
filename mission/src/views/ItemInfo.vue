@@ -126,7 +126,7 @@ export default {
   computed: {
     itemPriceResult() {
       const sum = this.itemInfo.price * ((100 - this.itemInfo.discount) / 100);
-      return sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+      return sum.toLocaleString();
     },
   },
   methods: {
