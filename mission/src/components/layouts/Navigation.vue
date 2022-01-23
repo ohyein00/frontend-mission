@@ -9,15 +9,15 @@
         </li>
         <li class="nav-item nav-bars">
           <div class="icon-area">
-            <font-awesome-icon icon="bars"></font-awesome-icon>
+            <font-awesome-icon icon="heart"></font-awesome-icon>
           </div>
-          <p>카테고리</p>
+          <p>찜 목록</p>
         </li>
         <li class="nav-item nav-search">
           <div class="icon-area">
-            <font-awesome-icon icon="search"></font-awesome-icon>
+            <font-awesome-icon icon="shopping-cart"></font-awesome-icon>
           </div>
-          <p>검색</p>
+          <p>장바구니</p>
         </li>
         <li class="nav-item nav-user">
           <div class="icon-area">
@@ -52,15 +52,15 @@ export default {
   .nav-item{
     flex:1;
     text-align:center;
+    color: #807d7d;
     .icon-area{
       width:100%;
       margin-bottom:5px;
       svg{
         font-size:18px;
-        color: #5a5353;
       }
     }
-    font-size:14px;
+    font-size:13px;
   }
 }
 </style>

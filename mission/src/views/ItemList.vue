@@ -1,6 +1,6 @@
 <template>
   <div id="item-list-page">
-    <ul class="item-group">
+    <ul v-if="itemList" class="item-group">
       <li v-for="item in itemList"
           :key="item.title"
           class="item-frame">
@@ -13,6 +13,9 @@
            data-test="item-component"/>
       </li>
     </ul>
+    <div v-else class="no-data">
+      상품을 찾을 수 없습니다.
+    </div>
   </div>
 
   <Navigation/>
@@ -20,9 +23,9 @@
 
 <script>
 import ItemComponent from '@/components/ItemList/Item.vue';
-import getItemData from '@/composables/getItemData';
 
 import Navigation from '@/components/layouts/Navigation.vue';
+import getItemRef from '@/composables/getItemData';
 
 export default {
   name: 'ItemListPage',
@@ -32,7 +35,7 @@ export default {
   },
   setup() {
     return {
-      ...getItemData(['title', 'price', 'discount', 'thumbNailUrl', 'likes']),
+      ...getItemRef(['title', 'price', 'discount', 'thumbNailUrl', 'likes']),
     };
   },
   methods: {},
@@ -42,6 +45,11 @@ export default {
 </script>
 
 <style lang="scss">
+.no-data{
+  text-align:center;
+  font-size:14px;
+  padding:20px;
+}
 #item-list-page{
   padding-bottom:60px;
 }

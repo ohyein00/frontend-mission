@@ -1,30 +1,19 @@
 <template>
 
   <div id="wrapper">
-    <Header data-test="header"/>
-    <div id="container">
+    <MyLayout>
       <router-view/>
-    </div>
+    </MyLayout>
     <Footer data-test="footer"/>
   </div>
 </template>
 
 <script>
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faShoppingCart, faHome, faUser, faSearch, faBars,
-} from '@fortawesome/free-solid-svg-icons';
-import Header from '@/components/layouts/Header.vue';
-import Footer from '@/components/layouts/Footer.vue';
-
-library.add(faShoppingCart, faHome, faUser, faSearch, faBars);
+import MyLayout from '@/layouts/MyLayout.vue';
 
 export default {
-  components: {
-    Header,
-    Footer,
-  },
+  components: { MyLayout },
 };
 </script>
 <style lang="scss">
@@ -36,9 +25,5 @@ export default {
   width: 100%;
   text-align: left;
   color: #333;
-}
-#container{
-  overflow:hidden;
-  width:100%;
 }
 </style>

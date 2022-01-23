@@ -5,7 +5,7 @@
               <span data-test="item-discount" class="rate">
                 {{ discount }}<small>%</small>
               </span>
-      <span class="price"><b>{{ price }}</b>원</span>
+      <span data-test="item-price" class="price"><b>{{ price.toLocaleString() }}</b>원</span>
     </p>
     <p data-test="item-after-price" class="after-price">
       <!-- 최종금액 -->

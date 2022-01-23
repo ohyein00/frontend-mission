@@ -75,7 +75,6 @@ export default {
     padding-bottom:115%;
     overflow: hidden;
     margin-bottom: 10px;
-    border-radius: 5px;
 
     img {
       position:absolute;

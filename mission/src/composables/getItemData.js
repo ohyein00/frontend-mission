@@ -1,21 +1,25 @@
 import axios from 'axios';
 import { ref } from 'vue';
 
-const getItemData = (filterKey) => {
+export const mapData = (data, keys) => {
+  const mapDataArray = data.map((item) => {
+    const dataItem = {};
+    keys.forEach((key) => {
+      dataItem[key] = item[key];
+    });
+    return dataItem;
+  });
+  return mapDataArray;
+};
+
+export const axiosData = () => axios.get('http://localhost:10000/itemInfo')
+  .then((response) => response.data).catch(() => 'error_message');
+
+const getItemRef = (dataKey) => {
   const itemList = ref([]);
-  axios.get('http://localhost:10000/itemInfo').then((response) => {
-    const filterItems = response.data.map((item) => {
-      const filterData = {};
-      filterKey.forEach((keyName) => {
-        filterData[keyName] = item[keyName];
-      });
-      return filterData;
-    });
-    itemList.value = filterItems;
-  })
-    .catch((error) => {
-      console.log(error);
-    });
+  axiosData().then((data) => {
+    itemList.value = mapData(data, dataKey);
+  });
   return { itemList };
 };
-export default getItemData;
+export default getItemRef;

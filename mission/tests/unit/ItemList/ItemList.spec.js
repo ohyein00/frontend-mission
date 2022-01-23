@@ -1,8 +1,11 @@
 import { mount } from '@vue/test-utils';
+import axios from 'axios';
 import ItemListPage from '@/views/ItemList.vue';
 import App from '@/App.vue';
+import { axiosData, mapData } from '@/composables/getItemData';
 
 let wrapper;
+jest.mock('axios');
 describe('layout', () => {
   beforeEach(() => {
     wrapper = mount(App);
@@ -52,12 +55,17 @@ describe('ItemListPage', () => {
     const itemComponents = wrapper.findAll('[data-test="item-component"]');
     expect(itemComponents).toHaveLength(itemList.length);
   });
+  it('axios data api and map', () => {
+    const users = [{ item: 'shirt', likes: 10 }];
+    const response = { data: users };
+    axios.get.mockResolvedValue(response);
+    axiosData().then((data) => {
+      expect(data).toEqual(users);
+      expect(mapData(data, ['item'])).toEqual([{ item: 'shirt' }]);
+    });
+  });
 
-  /*
-  item에서도 똑같이 테스트 하겠지만,
-  list-page의 데이터가 컴포넌트에게 잘 전달되어 렌더되는지 확인하는 방법으로 기대했음
-  */
-  it('item has own the title, likes, thumbNail, price', () => {
+/*  it('item has own the title, likes, thumbNail, price', () => {
     const ItemListItems = wrapper.findAll('[data-test="item-component"]');
     for (let i = 0; i < ItemListItems.length; i += 1) {
       const itemComponentImg = ItemListItems[i].find(['img']);
@@ -66,5 +74,5 @@ describe('ItemListPage', () => {
       expect(ItemListItems[i].text()).toContain(itemList[i].likes);
       expect(ItemListItems[i].text()).toContain(itemList[i].price);
     }
-  });
+  }); */
 });
