@@ -55,6 +55,7 @@ export default {
   padding:20px;
 }
 #item-list-page{
+  padding-top:50px;
   padding-bottom:20px;
 }
   .item-group{

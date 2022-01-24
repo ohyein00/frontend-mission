@@ -19,7 +19,7 @@ export default {
   setup() {
     const { scrollValue } = getScroll();
     const scrollHasTop = computed(() => {
-      if (scrollValue.value < 5) {
+      if (scrollValue.value < 40) {
         return true;
       }
       return false;
