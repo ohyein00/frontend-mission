@@ -1,15 +1,13 @@
 import { createApp } from 'vue';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import {
+  faShoppingCart, faHome, faUser, faHeart,
+} from '@fortawesome/free-solid-svg-icons';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import App from './App.vue';
 import router from './router';
 import store from './store';
 import './assets/css/reset.css';
-// eslint-disable-next-line import/order
-import { library } from '@fortawesome/fontawesome-svg-core';
-// eslint-disable-next-line import/order
-import {
-  faShoppingCart, faHome, faUser, faHeart,
-} from '@fortawesome/free-solid-svg-icons';
 
 library.add(faShoppingCart, faHome, faUser, faHeart);
 

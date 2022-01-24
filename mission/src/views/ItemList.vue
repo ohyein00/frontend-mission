@@ -1,4 +1,5 @@
 <template>
+  <Header></Header>
   <div id="item-list-page">
     <ul v-if="itemList" class="item-group">
       <li v-for="item in itemList"
@@ -26,16 +27,19 @@ import ItemComponent from '@/components/ItemList/Item.vue';
 
 import Navigation from '@/components/layouts/Navigation.vue';
 import getItemRef from '@/composables/getItemRef';
+import Header from '@/components/layouts/Header.vue';
 
 export default {
   name: 'ItemListPage',
   components: {
+    Header,
     ItemComponent,
     Navigation,
   },
   setup() {
     return {
       ...getItemRef(['title', 'price', 'discount', 'thumbNailUrl', 'likes']),
+
     };
   },
   methods: {},
