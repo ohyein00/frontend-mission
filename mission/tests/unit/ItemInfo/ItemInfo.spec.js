@@ -1,9 +1,11 @@
 import { mount } from '@vue/test-utils';
-
 import ItemInfoPage from '@/views/ItemInfo.vue';
 
 describe('ItemInfoPage', () => {
   const wrapper = mount(ItemInfoPage);
+  beforeEach(() => {
+
+  });
   it('redners ItemInfoPage', () => {
     expect(wrapper.find('#item-info-page').exists()).toBe(true);
   });
@@ -15,17 +17,11 @@ describe('ItemInfoPage', () => {
     const sellerIcon = wrapper.get('[data-test="seller-icon"]');
     const sellerName = wrapper.get('[data-test="seller-name"]');
     const itemTitle = wrapper.get('[data-test="item-title"]');
-    const itemPrice = wrapper.get('[data-test="item-before-price"]');
     const itemDesc = wrapper.get('[data-test="item-desc"]');
     expect(sellerIcon.exists()).toBe(true);
     expect(sellerName.exists()).toBe(true);
     expect(itemTitle.exists()).toBe(true);
-    expect(itemPrice.exists()).toBe(true);
     expect(itemDesc.exists()).toBe(true);
-  });
-  it('폰트어썸 확인', () => {
-    const icon = wrapper.find('[data-test="font-awesome"]');
-    expect(icon.exists()).toBe(true);
   });
   it('판매자 태그 정보가 존재하면 배열의 갯수만큼 태그가 출력됨', async () => {
     await wrapper.setData({ itemInfo: { seller: { tag: ['test1', 'test2', 'test3'] } } });
@@ -56,6 +52,6 @@ describe('ItemInfoPage', () => {
     const discount = 10;
     await wrapper.setData({ itemInfo: { discount, price } });
     expect(wrapper.text()).toContain('10%');
-    expect(wrapper.text()).toContain('9000원');
+    expect(wrapper.text()).toContain('9,000원');
   });
 });

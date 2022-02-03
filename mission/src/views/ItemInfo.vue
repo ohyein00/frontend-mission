@@ -1,64 +1,58 @@
 <template>
-  <div id="wrapper">
-    <div id='item-info-page'>
-      <div class="page-head">
-        <div id="item-cover">
-          <div class="slide-container">
-            <ul>
-              <li v-for="(url,i) in itemInfo.coverImgUrl" :key="`img_${i}`"
-                  class='slide-item'>
-                <figure v-bind:style="{backgroundImage:`url(${url})`}"/>
-              </li>
-            </ul>
-          </div>
+  <div id='item-info-page'>
+    <div class="page-head">
+      <div id="item-cover">
+        <div class="slide-container">
+          <ul>
+            <li v-for="(url,i) in itemInfo.coverImgUrl" :key="`img_${i}`"
+                class='slide-item'>
+              <figure v-bind:style="{backgroundImage:`url(${url})`}"/>
+            </li>
+          </ul>
         </div>
-        <section class="seller-sec">
-          <figure data-test="seller-icon"
-                  v-bind:style="{backgroundImage:`url(${itemInfo.seller.icon})`}"/>
-          <div class="txt-area">
-            <p data-test="seller-name" class="seller-name">
-              {{ itemInfo.seller.name }}
-            </p>
-            <div class="tag-area">
+      </div>
+      <section class="seller-sec">
+        <figure data-test="seller-icon"
+                v-bind:style="{backgroundImage:`url(${itemInfo.seller.icon})`}"/>
+        <div class="txt-area">
+          <p data-test="seller-name" class="seller-name">
+            {{ itemInfo.seller.name }}
+          </p>
+          <div class="tag-area">
           <span data-test="seller-tag" v-for="(tag,i) in itemInfo.seller.tag" :key="i" class="tag">
             #{{ tag }}
           </span>
-            </div>
           </div>
-        </section>
-        <section class="item-info-sec">
-          <h3 data-test="item-title" class="item-title">{{ itemInfo.title }}</h3>
-          <div :class="checkDiscount(itemInfo.discount)" class="price-area">
-            <!-- no-discount 일 경우 하단 p태그 display:none 처리됨 -->
-            <p data-test="item-before-price" class="before-price">
-              <span data-test="item-discount" class="rate">
-                {{ itemInfo.discount }}<small>%</small>
-              </span>
-              <span class="price"><b>{{ itemInfo.price }}</b>원</span>
-            </p>
-            <p data-test="item-after-price" class="after-price">
-              <!-- 최종금액 -->
-              <b class="num">{{ itemPriceResult }}</b>원</p>
+        </div>
+      </section>
+      <section class="item-info-sec">
+        <h3 data-test="item-title" class="item-title">{{ itemInfo.title }}</h3>
+        <PriceArea
+          :discount="itemInfo.discount"
+          :price="itemInfo.price"
+          size="medium"
+        />
+      </section>
+    </div>
+    <div class="page-body">
+      <section data-test="item-desc" class="item-desc-sec">
+        <div class="desc-area">
+          <div class="desc-frame" v-for="(desc,i) in itemInfo.description.contents"
+               :key="`desc_${i}`">
+            <!-- HTML 출력 -->
+            <div v-html="desc" class="desc"></div>
           </div>
-        </section>
-      </div>
-      <div class="page-body">
-        <section data-test="item-desc" class="item-desc-sec">
-          <div class="desc-area">
-            <div class="desc-frame" v-for="(desc,i) in itemInfo.desc.contents"
-                 :key="`desc_${i}`">
-              <!-- HTML 출력 -->
-              <div v-html="desc" class="desc"></div>
-            </div>
-          </div>
-        </section>
-        <section class="item-review-sec">
-          <h5 class="sec-title">
-            상품리뷰
-          </h5>
-          <template v-if="itemInfo.reviews">
+        </div>
+      </section>
+      <section class="item-review-sec">
+        <h5 class="sec-title">
+          상품리뷰
+        </h5>
+        <template v-if="itemInfo.reviews">
           <article data-test="item-review"
-                   v-for="(review,i) in itemInfo.reviews" :key="`review_${i}`" class="item-review">
+                   v-for="(review,) in itemInfo.reviews"
+                   :key="review"
+                   class="item-review">
             <div class="txt-area">
               <small data-test="item-review-name">작성자 : {{ review.userName }}</small>
               <p class="ttl">{{ review.title }}</p>
@@ -70,23 +64,21 @@
               <p v-else class="no-data">NO PHOTO</p>
             </div>
           </article>
-          </template>
-          <div v-else class="no-data"></div>
-        </section>
-
-      </div>
-      <div class="page-foot">
-        <div class="cart-bar">
-          <p>
-            <small>총 금액</small><br>
-            <span class="num">{{ itemPriceResult }}</span>원
-          </p>
-          <div class="btn-area">
-            <button>
-              <font-awesome-icon icon="shopping-cart" data-test="font-awesome"/>
-            </button>
-            <button class="buy-button">구매하기</button>
-          </div>
+        </template>
+        <div v-else class="no-data"></div>
+      </section>
+    </div>
+    <div class="page-foot">
+      <div class="cart-bar">
+        <p>
+          <small>총 금액</small><br>
+          <span class="num">{{ itemPriceResult }}</span>원
+        </p>
+        <div class="btn-area">
+          <button>
+            <font-awesome-icon icon="shopping-cart"/>
+          </button>
+          <button class="buy-button">구매하기</button>
         </div>
       </div>
     </div>
@@ -94,35 +86,35 @@
 </template>
 <script>
 import axios from 'axios';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faShoppingCart);
+import PriceArea from '@/components/ItemList/PriceArea.vue';
 
 export default {
   name: 'ItemInfoPage',
-
+  components: {
+    PriceArea,
+  },
   data() {
     return {
+      itemNum: 0,
       itemInfo: {
         id: 0,
         seller: {
-          name: undefined,
-          icon: undefined,
+          name: '',
+          icon: '',
           tag: [],
         },
-        title: undefined,
+        title: '',
         price: 0,
-        discount: undefined,
-        coverImgUrl: undefined,
-        desc: {
-          contents: undefined,
-          imgUrl: undefined,
+        discount: 0,
+        coverImgUrl: '',
+        description: {
+          contents: '',
+          imgUrl: '',
         },
         reviews: [{
-          userName: undefined,
-          text: undefined,
-          photo: undefined,
+          userName: '',
+          text: '',
+          photo: '',
         }],
       },
       slideNum: 0,
@@ -134,29 +126,32 @@ export default {
   computed: {
     itemPriceResult() {
       const sum = this.itemInfo.price * ((100 - this.itemInfo.discount) / 100);
-      return sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+      return sum.toLocaleString();
     },
   },
   methods: {
     getItemData() {
       axios.get('http://localhost:10000/itemInfo').then((response) => {
-        this.itemInfo.id = response.data.id;
-        this.itemInfo.seller = response.data.seller;
-        this.itemInfo.title = response.data.title;
-        this.itemInfo.price = response.data.price;
-        this.itemInfo.discount = response.data.discount;
-        this.itemInfo.coverImgUrl = response.data.coverImgUrl;
-        this.itemInfo.desc = response.data.desc;
-        this.itemInfo.reviews = response.data.reviews;
+        const {
+          id, seller, title, price, discount, coverImgUrl, description, reviews,
+        } = response.data[this.itemNum];
+        this.itemInfo.id = id;
+        this.itemInfo.seller = seller;
+        this.itemInfo.title = title;
+        this.itemInfo.price = price;
+        this.itemInfo.discount = discount;
+        this.itemInfo.coverImgUrl = coverImgUrl;
+        this.itemInfo.description = description;
+        this.itemInfo.reviews = reviews;
       }).catch((error) => {
         console.log(error);
       });
     },
     checkDiscount(discount) {
       if (discount > 0) {
-        return 'discount';
+        return true;
       }
-      return 'no-discount';
+      return false;
     },
 
   },
@@ -167,13 +162,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$gray_1 : #e7e7e7;
-#wrapper {
-  position: relative;
-  width: 100%;
-  overflow-x: hidden;
-  text-align: left;
-}
 
 .page-head {
   padding-bottom: 20px;
@@ -274,41 +262,9 @@ section {
     line-height: 1.2;
     margin-left: -2px;
   }
-
   .price-area {
-    margin-top: 10px;
-
-    .before-price {
-      margin-bottom: 3px;
-      font-size: 14px;
-
-      .rate {
-        color: #ea4949;
-        font-weight: 500;
-        margin-right: 5px;
-
-        small {
-          font-size: 12px;
-        }
-      }
-
-      .price {
-        text-decoration-line: line-through;
-        color: #666
-      }
-    }
-
-    .after-price {
-      font-size: 24px;
-      font-weight: 500;
-
-      .num {
-        font-size: 28px;
-        font-weight: bold;
-      }
-    }
+    margin:10px 0;
   }
-
 }
 
 .item-desc-sec {
@@ -322,12 +278,13 @@ section {
 }
 
 .item-review-sec {
-  div.no-data{
-    text-align:center;
-    color:#666;
-    padding:20px 0;
-    width:100%;
+  div.no-data {
+    text-align: center;
+    color: #666;
+    padding: 20px 0;
+    width: 100%;
   }
+
   .item-review {
     display: flex;
     justify-content: space-between;
@@ -339,21 +296,23 @@ section {
     border-radius: 15px;
 
     .img-area {
-      display:flex;
+      display: flex;
       align-items: center;
       flex-basis: 30%;
       flex-shrink: 0;
-      background:#e7e7e7;
+      background: #e7e7e7;
       border-radius: 15px;
+
       img {
         border-radius: 10px;
         display: block;
         width: 100%;
       }
-      p{
-        width:100%;
-        text-align:center;
-        font-size:12px;
+
+      p {
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
       }
     }
 
@@ -449,13 +408,6 @@ section {
       font-weight: 500;
       box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
     }
-  }
-}
-
-/* checkDiscount */
-.no-discount {
-  .before-price {
-    display: none;
   }
 }
 

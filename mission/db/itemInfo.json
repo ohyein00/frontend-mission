@@ -1,5 +1,5 @@
 {
-  "itemInfo":
+  "itemInfo": [
     {
       "id": 0,
       "seller": {
@@ -13,31 +13,280 @@
       },
       "title": "[탄탄한 코튼] 맨투맨 롱 원피스 카라넥 체형 보정",
       "price": 32000,
-      "discount":0,
+      "discount": 10,
+      "likes": 28,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
       "coverImgUrl": [
         "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
         "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247198399558m.jpg",
         "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247200437249m.jpg"
       ],
-      "desc": {
-        "contents" : ["<div> 톡톡한 코튼소재로 <b style=font-weight:bold>편하게 입기 좋은 원피스</b>입니다. 캐주얼한 무드를 담고 있는 편안한 착용감의 롱 원피스로 어디에든 이지하게 입어주기 좋은 아이템이예요.",
+      "description": {
+        "contents": [
+          "<div> 톡톡한 코튼소재로 <b style=font-weight:bold>편하게 입기 좋은 원피스</b>입니다. 캐주얼한 무드를 담고 있는 편안한 착용감의 롱 원피스로 어디에든 이지하게 입어주기 좋은 아이템이예요.",
           "깔끔한 기본 카라넥으로 밋밋함 없이 은은한 포인트를 더해주고요. 넥라인 아래쪽으로 지퍼를 더해주어 지퍼를 약간 오픈하여 은은한 포인트를 줄 수도 있어요.</div>",
-        "<img src=http://qkrwjdrlf.imglink.kr/auto/women/wo873/wo873_c1.jpg style=width:100%>"]
+          "<img src=http://qkrwjdrlf.imglink.kr/auto/women/wo873/wo873_c1.jpg style=width:100%>"
+        ]
       },
       "reviews": [
         {
-          "userName" : "오마이걸",
-          "title" : "너무 편하고 만족스러워요",
-          "text" : "요즘 제 인생템이에요! 너무 편하고 핏도 좋아서 맨날 이것만 입고다녀요. 색상도 예쁜 그레이여서 딱 좋아요. 팔부분도 넉넉해서 귀엽고 봄가을에 입기 딱 좋은 두께에요!! 너무 이뻐요!!!",
-          "photo":"https://d20s70j9gw443i.cloudfront.net/t_REVIEW_THUMB_WEBP/https://imgb.a-bly.com/data/review/review_1635480693199805.jpg"
+          "userName": "오마이걸",
+          "title": "너무 편하고 만족스러워요",
+          "text": "요즘 제 인생템이에요! 너무 편하고 핏도 좋아서 맨날 이것만 입고다녀요. 색상도 예쁜 그레이여서 딱 좋아요. 팔부분도 넉넉해서 귀엽고 봄가을에 입기 딱 좋은 두께에요!! 너무 이뻐요!!!",
+          "photo": "https://d20s70j9gw443i.cloudfront.net/t_REVIEW_THUMB_WEBP/https://imgb.a-bly.com/data/review/review_1635480693199805.jpg"
         },
         {
-          "userName" : "에스파",
+          "userName": "에스파",
           "title": "생각했던거랑 좀 달라요. 그래도 편해서 괜찮아요",
-          "text" : "생각했던 색이랑 다르긴 하지만 나쁘진 않아요. 편하게 입고다닐 것 같네요",
-          "photo":""
+          "text": "생각했던 색이랑 다르긴 하지만 나쁘진 않아요. 편하게 입고다닐 것 같네요",
+          "photo": ""
         }
-
+      ]
+    },
+    {
+      "id": 1,
+      "seller": {
+        "name": "앱코",
+        "icon": "https://avatars.githubusercontent.com/u/74913700?v=4",
+        "tag": [
+          "루즈핏",
+          "데일리룩",
+          "베이직"
+        ]
+      },
+      "title": "루즈단가라긴팔티",
+      "price": 32000,
+      "discount": 0,
+      "likes": 110,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+      "coverImgUrl": [
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953603353321m.jpg"
+      ],
+      "description": {
+        "contents": [
+          "언제든 입기 좋은 베이직템 단가라티에요. 루즈핏이지만 너무 크진 않고 적당히 넉넉해서 날씬해보이는 효자템이랍니다",
+          "<img src=https://o-ki.co.kr/web/upload/2018/0827H_T_1.jpg>"
+        ]
+      },
+      "reviews": [
+      ]
+    },
+    {
+      "id": 2,
+      "seller": {
+        "name": "예인마켓",
+        "icon": "https://avatars.githubusercontent.com/u/74913700?v=4",
+        "tag": [
+          "오버핏",
+          "데일리룩",
+          "심플"
+        ]
+      },
+      "title": "[탄탄한 코튼] 맨투맨 롱 원피스 카라넥 체형 보정",
+      "price": 32000,
+      "discount": 0,
+      "likes": 70,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
+      "coverImgUrl": [
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247198399558m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247200437249m.jpg"
+      ],
+      "description": {
+        "contents": [
+          "<div> 톡톡한 코튼소재로 <b style=font-weight:bold>편하게 입기 좋은 원피스</b>입니다. 캐주얼한 무드를 담고 있는 편안한 착용감의 롱 원피스로 어디에든 이지하게 입어주기 좋은 아이템이예요.",
+          "깔끔한 기본 카라넥으로 밋밋함 없이 은은한 포인트를 더해주고요. 넥라인 아래쪽으로 지퍼를 더해주어 지퍼를 약간 오픈하여 은은한 포인트를 줄 수도 있어요.</div>",
+          "<img src=http://qkrwjdrlf.imglink.kr/auto/women/wo873/wo873_c1.jpg style=width:100%>"
+        ]
+      },
+      "reviews": [
+        {
+          "userName": "오마이걸",
+          "title": "너무 편하고 만족스러워요",
+          "text": "요즘 제 인생템이에요! 너무 편하고 핏도 좋아서 맨날 이것만 입고다녀요. 색상도 예쁜 그레이여서 딱 좋아요. 팔부분도 넉넉해서 귀엽고 봄가을에 입기 딱 좋은 두께에요!! 너무 이뻐요!!!",
+          "photo": "https://d20s70j9gw443i.cloudfront.net/t_REVIEW_THUMB_WEBP/https://imgb.a-bly.com/data/review/review_1635480693199805.jpg"
+        },
+        {
+          "userName": "에스파",
+          "title": "생각했던거랑 좀 달라요. 그래도 편해서 괜찮아요",
+          "text": "생각했던 색이랑 다르긴 하지만 나쁘진 않아요. 편하게 입고다닐 것 같네요",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "seller": {
+        "name": "앱코",
+        "icon": "https://avatars.githubusercontent.com/u/74913700?v=4",
+        "tag": [
+          "루즈핏",
+          "데일리룩",
+          "베이직"
+        ]
+      },
+      "title": "루즈단가라긴팔티",
+      "price": 32000,
+      "discount": 23,
+      "likes": 2028,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+      "coverImgUrl": [
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953603353321m.jpg"
+      ],
+      "description": {
+        "contents": [
+          "언제든 입기 좋은 베이직템 단가라티에요. 루즈핏이지만 너무 크진 않고 적당히 넉넉해서 날씬해보이는 효자템이랍니다",
+          "<img src=https://o-ki.co.kr/web/upload/2018/0827H_T_1.jpg>"
+        ]
+      },
+      "reviews": [
+      ]
+    },
+    {
+      "id": 4,
+      "seller": {
+        "name": "예인마켓",
+        "icon": "https://avatars.githubusercontent.com/u/74913700?v=4",
+        "tag": [
+          "오버핏",
+          "데일리룩",
+          "심플"
+        ]
+      },
+      "title": "[탄탄한 코튼] 맨투맨 롱 원피스 카라넥 체형 보정",
+      "price": 32000,
+      "discount": 10,
+      "likes": 28,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
+      "coverImgUrl": [
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247198399558m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247200437249m.jpg"
+      ],
+      "description": {
+        "contents": [
+          "<div> 톡톡한 코튼소재로 <b style=font-weight:bold>편하게 입기 좋은 원피스</b>입니다. 캐주얼한 무드를 담고 있는 편안한 착용감의 롱 원피스로 어디에든 이지하게 입어주기 좋은 아이템이예요.",
+          "깔끔한 기본 카라넥으로 밋밋함 없이 은은한 포인트를 더해주고요. 넥라인 아래쪽으로 지퍼를 더해주어 지퍼를 약간 오픈하여 은은한 포인트를 줄 수도 있어요.</div>",
+          "<img src=http://qkrwjdrlf.imglink.kr/auto/women/wo873/wo873_c1.jpg style=width:100%>"
+        ]
+      },
+      "reviews": [
+        {
+          "userName": "오마이걸",
+          "title": "너무 편하고 만족스러워요",
+          "text": "요즘 제 인생템이에요! 너무 편하고 핏도 좋아서 맨날 이것만 입고다녀요. 색상도 예쁜 그레이여서 딱 좋아요. 팔부분도 넉넉해서 귀엽고 봄가을에 입기 딱 좋은 두께에요!! 너무 이뻐요!!!",
+          "photo": "https://d20s70j9gw443i.cloudfront.net/t_REVIEW_THUMB_WEBP/https://imgb.a-bly.com/data/review/review_1635480693199805.jpg"
+        },
+        {
+          "userName": "에스파",
+          "title": "생각했던거랑 좀 달라요. 그래도 편해서 괜찮아요",
+          "text": "생각했던 색이랑 다르긴 하지만 나쁘진 않아요. 편하게 입고다닐 것 같네요",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "seller": {
+        "name": "앱코",
+        "icon": "https://avatars.githubusercontent.com/u/74913700?v=4",
+        "tag": [
+          "루즈핏",
+          "데일리룩",
+          "베이직"
+        ]
+      },
+      "title": "루즈단가라긴팔티",
+      "price": 32000,
+      "discount": 0,
+      "likes": 110,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+      "coverImgUrl": [
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953603353321m.jpg"
+      ],
+      "description": {
+        "contents": [
+          "언제든 입기 좋은 베이직템 단가라티에요. 루즈핏이지만 너무 크진 않고 적당히 넉넉해서 날씬해보이는 효자템이랍니다",
+          "<img src=https://o-ki.co.kr/web/upload/2018/0827H_T_1.jpg>"
+        ]
+      },
+      "reviews": [
+      ]
+    },
+    {
+      "id": 6,
+      "seller": {
+        "name": "예인마켓",
+        "icon": "https://avatars.githubusercontent.com/u/74913700?v=4",
+        "tag": [
+          "오버핏",
+          "데일리룩",
+          "심플"
+        ]
+      },
+      "title": "[탄탄한 코튼] 맨투맨 롱 원피스 카라넥 체형 보정",
+      "price": 32000,
+      "discount": 0,
+      "likes": 70,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
+      "coverImgUrl": [
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247196589477m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247198399558m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20210829_1630247200437249m.jpg"
+      ],
+      "description": {
+        "contents": [
+          "<div> 톡톡한 코튼소재로 <b style=font-weight:bold>편하게 입기 좋은 원피스</b>입니다. 캐주얼한 무드를 담고 있는 편안한 착용감의 롱 원피스로 어디에든 이지하게 입어주기 좋은 아이템이예요.",
+          "깔끔한 기본 카라넥으로 밋밋함 없이 은은한 포인트를 더해주고요. 넥라인 아래쪽으로 지퍼를 더해주어 지퍼를 약간 오픈하여 은은한 포인트를 줄 수도 있어요.</div>",
+          "<img src=http://qkrwjdrlf.imglink.kr/auto/women/wo873/wo873_c1.jpg style=width:100%>"
+        ]
+      },
+      "reviews": [
+        {
+          "userName": "오마이걸",
+          "title": "너무 편하고 만족스러워요",
+          "text": "요즘 제 인생템이에요! 너무 편하고 핏도 좋아서 맨날 이것만 입고다녀요. 색상도 예쁜 그레이여서 딱 좋아요. 팔부분도 넉넉해서 귀엽고 봄가을에 입기 딱 좋은 두께에요!! 너무 이뻐요!!!",
+          "photo": "https://d20s70j9gw443i.cloudfront.net/t_REVIEW_THUMB_WEBP/https://imgb.a-bly.com/data/review/review_1635480693199805.jpg"
+        },
+        {
+          "userName": "에스파",
+          "title": "생각했던거랑 좀 달라요. 그래도 편해서 괜찮아요",
+          "text": "생각했던 색이랑 다르긴 하지만 나쁘진 않아요. 편하게 입고다닐 것 같네요",
+          "photo": ""
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "seller": {
+        "name": "앱코",
+        "icon": "https://avatars.githubusercontent.com/u/74913700?v=4",
+        "tag": [
+          "루즈핏",
+          "데일리룩",
+          "베이직"
+        ]
+      },
+      "title": "루즈단가라긴팔티",
+      "price": 32000,
+      "discount": 23,
+      "likes": 2028,
+      "thumbNailUrl": "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+      "coverImgUrl": [
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953600967308m.jpg",
+        "https://d20s70j9gw443i.cloudfront.net/t_GOODS_DETAIL/https://imgb.a-bly.com/data/goods/20211208_1638953603353321m.jpg"
+      ],
+      "description": {
+        "contents": [
+          "언제든 입기 좋은 베이직템 단가라티에요. 루즈핏이지만 너무 크진 않고 적당히 넉넉해서 날씬해보이는 효자템이랍니다",
+          "<img src=https://o-ki.co.kr/web/upload/2018/0827H_T_1.jpg>"
+        ]
+      },
+      "reviews": [
       ]
     }
+  ]
 }
