@@ -4,32 +4,34 @@
       <div id="item-cover">
         <div class="slide-container">
           <ul>
-            <li v-for="(url,i) in itemInfo.coverImgUrl" :key="`img_${i}`"
+            <li
                 class='slide-item'>
-              <figure v-bind:style="{backgroundImage:`url(${url})`}"/>
+              <img :src="itemInfo.image" :alt="itemInfo.name">
             </li>
           </ul>
         </div>
       </div>
       <section class="seller-sec">
-        <figure data-test="seller-icon"
-                v-bind:style="{backgroundImage:`url(${itemInfo.seller.icon})`}"/>
+        <figure data-test="seller-icon">
+          <img :src="itemInfo.seller.profile_image">
+        </figure>
         <div class="txt-area">
           <p data-test="seller-name" class="seller-name">
             {{ itemInfo.seller.name }}
           </p>
           <div class="tag-area">
-          <span data-test="seller-tag" v-for="(tag,i) in itemInfo.seller.tag" :key="i" class="tag">
+          <span data-test="seller-tag" v-for="(tag,i) in itemInfo.seller.hash_tags"
+                :key="i" class="tag">
             #{{ tag }}
           </span>
           </div>
         </div>
       </section>
       <section class="item-info-sec">
-        <h3 data-test="item-title" class="item-title">{{ itemInfo.title }}</h3>
+        <h3 data-test="item-title" class="item-title">{{ itemInfo.name }}</h3>
         <PriceArea
-          :discount="itemInfo.discount"
           :price="itemInfo.price"
+          :originalPrice="itemInfo.original_price"
           size="medium"
         />
       </section>
@@ -37,10 +39,9 @@
     <div class="page-body">
       <section data-test="item-desc" class="item-desc-sec">
         <div class="desc-area">
-          <div class="desc-frame" v-for="(desc,i) in itemInfo.description.contents"
-               :key="`desc_${i}`">
+          <div class="desc-frame" >
             <!-- HTML 출력 -->
-            <div v-html="desc" class="desc"></div>
+            <div v-html="itemInfo.description" class="desc"></div>
           </div>
         </div>
       </section>
@@ -54,14 +55,15 @@
                    :key="review"
                    class="item-review">
             <div class="txt-area">
-              <small data-test="item-review-name">작성자 : {{ review.userName }}</small>
+              <small data-test="item-review-name">작성자 : {{ review.writer }}</small>
               <p class="ttl">{{ review.title }}</p>
-              <p data-test="item-review-text" class="contents">{{ review.text }}</p>
+              <p data-test="item-review-text" class="contents">{{ review.content }}</p>
             </div>
             <div class="img-area">
-              <img v-if="review.photo" :src="review.photo" class="no-data"
+              <img v-if="review.photo" :src="review.img" class="no-data"
                    data-test="item-review-photo" alt="리뷰이미지"/>
               <p v-else class="no-data">NO PHOTO</p>
+
             </div>
           </article>
         </template>
@@ -72,10 +74,10 @@
       <div class="cart-bar">
         <p>
           <small>총 금액</small><br>
-          <span class="num">{{ itemPriceResult }}</span>원
+          <span class="num">{{ itemInfo.price }}</span>원
         </p>
         <div class="btn-area">
-          <button>
+          <button @click="pushRouter('/cart')">
             <font-awesome-icon icon="shopping-cart"/>
           </button>
           <button class="buy-button">구매하기</button>
@@ -85,8 +87,8 @@
   </div>
 </template>
 <script>
-import axios from 'axios';
 import PriceArea from '@/components/ItemList/PriceArea.vue';
+import { getItemInfo } from '@/composables/getItemData';
 
 export default {
   name: 'ItemInfoPage',
@@ -95,57 +97,16 @@ export default {
   },
   data() {
     return {
-      itemNum: 0,
-      itemInfo: {
-        id: 0,
-        seller: {
-          name: '',
-          icon: '',
-          tag: [],
-        },
-        title: '',
-        price: 0,
-        discount: 0,
-        coverImgUrl: '',
-        description: {
-          contents: '',
-          imgUrl: '',
-        },
-        reviews: [{
-          userName: '',
-          text: '',
-          photo: '',
-        }],
-      },
-      slideNum: 0,
     };
   },
-  created() {
-    this.getItemData();
-  },
-  computed: {
-    itemPriceResult() {
-      const sum = this.itemInfo.price * ((100 - this.itemInfo.discount) / 100);
-      return sum.toLocaleString();
-    },
+  setup() {
+    return {
+      ...getItemInfo(),
+    };
   },
   methods: {
-    getItemData() {
-      axios.get('http://localhost:10000/itemInfo').then((response) => {
-        const {
-          id, seller, title, price, discount, coverImgUrl, description, reviews,
-        } = response.data[this.itemNum];
-        this.itemInfo.id = id;
-        this.itemInfo.seller = seller;
-        this.itemInfo.title = title;
-        this.itemInfo.price = price;
-        this.itemInfo.discount = discount;
-        this.itemInfo.coverImgUrl = coverImgUrl;
-        this.itemInfo.description = description;
-        this.itemInfo.reviews = reviews;
-      }).catch((error) => {
-        console.log(error);
-      });
+    pushRouter(path) {
+      this.$router.push(path);
     },
     checkDiscount(discount) {
       if (discount > 0) {
@@ -153,7 +114,6 @@ export default {
       }
       return false;
     },
-
   },
   mounted() {
   },
@@ -202,12 +162,11 @@ section {
       width: 100%;
       height: 100%;
 
-      figure {
+      img {
         display: block;
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-position: center center;
+        object-fit: cover;
       }
     }
   }
@@ -219,12 +178,30 @@ section {
   padding: 15px 20px;
 
   figure {
-    width: 35px;
-    height: 35px;
+    position:relative;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     background-size: cover;
     background-color: $gray_1;
-    border: 1px solid $gray_1
+    overflow:hidden;
+    img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    &::after{
+      content:'';
+      position:absolute;
+      left:0;
+      top:0;
+      box-sizing: border-box;
+      width:100%;
+      height:100%;
+      border-radius: 100%;
+      border:1px solid #000;
+      opacity:.05;
+    }
   }
 
   .txt-area {

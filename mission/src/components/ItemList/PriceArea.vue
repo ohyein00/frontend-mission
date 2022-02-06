@@ -1,15 +1,15 @@
 <template>
   <div :class="size" class="price-area">
-    <p v-if="discount>0"
+    <p v-if="originalPrice"
        data-test="item-before-price" class="before-price">
               <span data-test="item-discount" class="rate">
-                {{ discount }}<small>%</small>
+                {{ priceDiscountRate(originalPrice,price) }}<small>%</small>
               </span>
-      <span data-test="item-price" class="price"><b>{{ price.toLocaleString() }}</b>원</span>
+      <span data-test="item-price" class="price"><b>{{ originalPrice }}</b>원</span>
     </p>
     <p data-test="item-after-price" class="after-price">
       <!-- 최종금액 -->
-      <b class="num">{{ itemPriceResult }}</b>원</p>
+      <b class="num">{{ price }}</b>원</p>
   </div>
 </template>
 
@@ -24,14 +24,14 @@ export default {
     price: {
       type: Number,
     },
-    discount: {
+    originalPrice: {
       type: Number,
     },
   },
-  computed: {
-    itemPriceResult() {
-      const sum = this.price * ((100 - this.discount) / 100);
-      return sum.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+  methods: {
+    priceDiscountRate(originalPrice, finalPrice) {
+      const sum = ((originalPrice - finalPrice) / originalPrice) * 100;
+      return parseInt(sum, 10);
     },
   },
 };

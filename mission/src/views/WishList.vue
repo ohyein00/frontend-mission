@@ -1,10 +1,10 @@
 <template>
   <Header></Header>
-  <div id="item-list-page" >
-    <h3 class="page-ttl">판매 상품</h3>
+  <div id="item-list-page">
+    <h3 class="page-ttl">찜 목록</h3>
     <div class="item-wrap">
-      <ul v-if="typeof itemList === 'object'" class="item-group">
-        <li v-for="item in itemList"
+      <ul v-if="typeof wishList === 'object'" class="item-group">
+        <li v-for="item in wishList"
             :key="item.title"
             class="item-frame"
             @click="pushRouter(`/item/${item.product_no}`)"
@@ -17,8 +17,8 @@
             data-test="item-component"/>
         </li>
       </ul>
-      <p v-else-if="typeof itemList === 'string'" class="no-data">
-        {{ itemList }}
+      <p v-else-if="typeof wishList === 'string'" class="no-data">
+        {{ wishList }}
       </p>
     </div>
   </div>
@@ -30,7 +30,7 @@
 import ItemComponent from '@/components/ItemList/Item.vue';
 import Navigation from '@/components/layouts/Navigation.vue';
 import Header from '@/components/layouts/Header.vue';
-import { getItemList } from '@/composables/getItemData';
+import { getWishList } from '@/composables/getItemData';
 
 export default {
   components: {
@@ -40,7 +40,7 @@ export default {
   },
   setup() {
     return {
-      ...getItemList(),
+      ...getWishList(),
     };
   },
   methods: {
@@ -48,18 +48,22 @@ export default {
       this.$router.push(path);
     },
   },
-  mounted() {
-  },
 };
 </script>
 
 <style lang="scss">
+.no-data {
+  text-align: center;
+  font-size: 14px;
+  padding: 20px;
+}
 
 #item-list-page {
   min-height: 100vh;
   padding-top: 50px;
   padding-bottom: 20px;
 }
+
 .item-group {
   display: flex;
   flex-wrap: wrap;

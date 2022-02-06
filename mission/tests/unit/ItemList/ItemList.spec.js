@@ -2,10 +2,10 @@ import { mount } from '@vue/test-utils';
 import axios from 'axios';
 import ItemListPage from '@/views/ItemList.vue';
 import App from '@/App.vue';
-import { axiosData, mapData } from '@/composables/getItemRef';
 
 let wrapper;
 jest.mock('axios');
+
 describe('layout', () => {
   beforeEach(() => {
     wrapper = mount(App);
@@ -55,24 +55,23 @@ describe('ItemListPage', () => {
     const itemComponents = wrapper.findAll('[data-test="item-component"]');
     expect(itemComponents).toHaveLength(itemList.length);
   });
-  it('axios data api and map', () => {
-    const itemData = [{ item: 'shirt', likes: 10 }];
-    const response = { data: itemData };
+  it('axios item', () => {
+    const data = [{ item: 'shirt', likes: 10 }];
+    const response = { items: data };
     axios.get.mockResolvedValue(response);
-    axiosData().then((data) => {
-      expect(data).toEqual(itemData);
-      expect(mapData(data, ['item'])).toEqual([{ item: 'shirt' }]);
+    axios.get('sss').then((res) => {
+      console.log(res);
+      expect(res.items).toEqual(data);
     });
   });
-
-/*  it('item has own the title, likes, thumbNail, price', () => {
-    const ItemListItems = wrapper.findAll('[data-test="item-component"]');
-    for (let i = 0; i < ItemListItems.length; i += 1) {
-      const itemComponentImg = ItemListItems[i].find(['img']);
-      expect(itemComponentImg.attributes().src).toEqual(itemList[i].thumbNailUrl);
-      expect(ItemListItems[i].text()).toContain(itemList[i].title);
-      expect(ItemListItems[i].text()).toContain(itemList[i].likes);
-      expect(ItemListItems[i].text()).toContain(itemList[i].price);
-    }
-  }); */
+  /*  it('item has own the title, likes, thumbNail, price', () => {
+      const ItemListItems = wrapper.findAll('[data-test="item-component"]');
+      for (let i = 0; i < ItemListItems.length; i += 1) {
+        const itemComponentImg = ItemListItems[i].find(['img']);
+        expect(itemComponentImg.attributes().src).toEqual(itemList[i].thumbNailUrl);
+        expect(ItemListItems[i].text()).toContain(itemList[i].title);
+        expect(ItemListItems[i].text()).toContain(itemList[i].likes);
+        expect(ItemListItems[i].text()).toContain(itemList[i].price);
+      }
+    }); */
 });
