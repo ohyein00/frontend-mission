@@ -7,7 +7,7 @@
       <h5 class="item-title" data-test="item-title">{{ title }}</h5>
       <div class="price-wrap">
         <PriceArea
-          :discount="discount"
+          :originalPrice="originalPrice"
           :price="price"
           size="small"
         />
@@ -42,8 +42,12 @@ export default {
     },
     likes: {
       type: Number,
+      default: 0,
     },
     price: {
+      type: Number,
+    },
+    originalPrice: {
       type: Number,
     },
     discount: {

@@ -4,7 +4,6 @@
     <MyLayout>
       <router-view/>
     </MyLayout>
-    <Footer data-test="footer"/>
   </div>
 </template>
 
