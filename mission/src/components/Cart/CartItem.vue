@@ -29,6 +29,11 @@
         </button>
       </div>
     </template>
+    <template v-if="orderQuantity">
+      <div class="order-quantity-area">
+        <p>{{ orderQuantity }}개</p>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -41,6 +46,7 @@ export default {
     PriceArea,
   },
   props: {
+
     title: {
       type: String,
     },
@@ -63,6 +69,9 @@ export default {
       type: Number,
     },
     cartListNum: {
+      type: Number,
+    },
+    orderQuantity: {
       type: Number,
     },
   },
@@ -123,7 +132,6 @@ export default {
     flex:2;
     padding: 0 10px;
   }
-
   .quantity-area {
     flex: 0.8;
     display: flex;
@@ -145,6 +153,12 @@ export default {
       border-right: none;
       text-align: center;
     }
+  }
+  .order-quantity-area {
+    flex: 0.3;
+    display: flex;
+    font-size:16px;
+    text-align:center;
   }
 
   .btn-area {

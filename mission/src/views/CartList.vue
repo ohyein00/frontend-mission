@@ -56,9 +56,6 @@ export default {
       discountPrice: 0,
     };
   },
-  computed: {
-
-  },
   methods: {
     checkCartList() {
       return this.$store.state.cartModule.cartList.length > 0;

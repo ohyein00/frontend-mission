@@ -13,9 +13,10 @@
             :title="item.name"
             :cartListNum="index"
             :thumbNailUrl="item.image"
-            :price="item.price"
-            :originalPrice="item.original_price"
+            :price="calcTotalPrice(item.price,item.amount)"
+            :originalPrice="calcTotalPrice(item.original_price,item.amount)"
             :productNo="item.product_no"
+            :orderQuantity="item.amount"
             data-test="item-component"/>
         </li>
       </ul>
@@ -39,6 +40,11 @@ export default {
     return {
       cartList: this.$store.state.cartModule.cartList,
     };
+  },
+  methods: {
+    calcTotalPrice(price, amount) {
+      return price * amount;
+    },
   },
 };
 </script>
