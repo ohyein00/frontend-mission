@@ -77,10 +77,11 @@
           <span class="num">{{ itemInfo.price }}</span>원
         </p>
         <div class="btn-area">
-          <button @click="pushRouter('/cart')">
+          <button @click="addCart(itemInfo)">
             <font-awesome-icon icon="shopping-cart"/>
           </button>
-          <button class="buy-button">구매하기</button>
+          <button @click="[addCart(itemInfo),pushRouter('/cart')]"
+                      class="buy-button">구매하기</button>
         </div>
       </div>
     </div>
@@ -89,6 +90,7 @@
 <script>
 import PriceArea from '@/components/ItemList/PriceArea.vue';
 import { getItemInfo } from '@/composables/getItemData';
+import addCart from '@/composables/addCart';
 
 export default {
   name: 'ItemInfoPage',
@@ -102,6 +104,7 @@ export default {
   setup() {
     return {
       ...getItemInfo(),
+      addCart,
     };
   },
   methods: {
@@ -360,7 +363,7 @@ section {
   }
 
   .btn-area {
-    button {
+    button{
       vertical-align: bottom;
       text-align: center;
       min-width: 45px;

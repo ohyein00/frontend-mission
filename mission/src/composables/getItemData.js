@@ -63,11 +63,11 @@ export const axiosCartList = () => CartRepository.get()
   .then((response) => response.data.items);
 
 export const getCartList = () => {
-  const cartList = ref('Loading');
+  const getServeCartItems = ref('Loading');
   axiosItemList().then((data) => {
-    cartList.value = data;
+    getServeCartItems.value = data;
   }).catch(() => {
-    cartList.value = '상품을 찾을 수 없습니다';
+    getServeCartItems.value = '상품을 찾을 수 없습니다';
   });
-  return { cartList };
+  return { getServeCartItems };
 };

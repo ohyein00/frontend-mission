@@ -20,7 +20,7 @@
               :originalPrice="item.original_price"
               data-test="item-component"/>
           </router-link>
-          <button @click="addCart(item.product_no)" class="cart-button">
+          <button @click="addCart(item)" class="cart-button">
             <font-awesome-icon icon="shopping-cart"/>
           </button>
         </div>
@@ -35,12 +35,12 @@
 </template>
 
 <script>
-import { useStore } from 'vuex';
 import ItemComponent from '@/components/ItemList/Item.vue';
 import Navigation from '@/components/layouts/Navigation.vue';
 import Header from '@/components/layouts/Header.vue';
 import { getItemList } from '@/composables/getItemData';
 import SortItem from '@/components/ItemList/sortItem.vue';
+import addCart from '@/composables/addCart';
 
 export default {
   components: {
@@ -50,18 +50,6 @@ export default {
     Navigation,
   },
   setup() {
-    const store = useStore();
-    const addCart = (productNo) => {
-      const cartItem = { productNo, amount: 1 };
-      const alreadyItemIndex = store.state.cartList
-        .findIndex((item) => item.productNo === productNo);
-      if (alreadyItemIndex === -1) {
-        store.dispatch('addCart', cartItem);
-      } else {
-        store.dispatch('increaseCart', alreadyItemIndex);
-        alert('상품이 이미 담겨있어 수량이 추가되었습니다.');
-      }
-    };
     const validationObject = (data) => typeof data === 'object';
     const { itemList } = getItemList();
     return {
@@ -99,7 +87,7 @@ export default {
   height:30px;
   padding-right:8px;
   box-sizing: border-box;
-  line-height:21 px;
+  line-height:21px;
   text-align:center;
   background:$red_1;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);

@@ -5,11 +5,11 @@
               <span data-test="item-discount" class="rate">
                 {{ priceDiscountRate(originalPrice,price) }}<small>%</small>
               </span>
-      <span data-test="item-price" class="price"><b>{{ toLocale(originalPrice) }}</b>원</span>
+      <span data-test="item-price" class="price"><b>{{originalPrice }}</b>원</span>
     </p>
     <p data-test="item-after-price" class="after-price">
       <!-- 최종금액 -->
-      <b class="num">{{ toLocale(price) }}</b>원</p>
+      <b class="num">{{ price }}</b>원</p>
   </div>
 </template>
 
@@ -32,9 +32,6 @@ export default {
     priceDiscountRate(originalPrice, finalPrice) {
       const sum = ((originalPrice - finalPrice) / originalPrice) * 100;
       return parseInt(sum, 10);
-    },
-    toLocale(price) {
-      return price.toLocaleString();
     },
   },
 };
