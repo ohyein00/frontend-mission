@@ -9,7 +9,7 @@
         <PriceArea
           :originalPrice="originalPrice"
           :price="price"
-          size="small"
+          size="list"
         />
         <div class="item-likes" data-test="item-likes">
       <span class="num">
@@ -37,6 +37,9 @@ export default {
     title: {
       type: String,
     },
+    productNo: {
+      type: String,
+    },
     thumbNailUrl: {
       type: String,
     },
@@ -53,6 +56,8 @@ export default {
     discount: {
       type: Number,
     },
+  },
+  methods: {
   },
   setup() {
     return {};
@@ -76,14 +81,14 @@ export default {
   .img-area {
     position: relative;
     width: 100%;
-    padding-bottom:115%;
+    padding-bottom: 100%;
     overflow: hidden;
     margin-bottom: 10px;
 
     img {
-      position:absolute;
-      width:100%;
-      height:100%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
       width: 100%;
@@ -94,18 +99,25 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    .item-likes{
-      padding-bottom:5px;
-      font-size:12px;
-      .num{
-        padding-right:4px;
-        font-weight:500;
-        font-size:13px;
+
+    .item-likes {
+      padding-bottom: 5px;
+      font-size: 12px;
+
+      .num {
+        padding-right: 4px;
+        font-weight: 500;
+        font-size: 13px;
       }
-      svg{
-        color : $red_1
+
+      svg {
+        color: $red_1
       }
     }
   }
+  .txt-area{
+    position:relative;
+  }
+
 }
 </style>

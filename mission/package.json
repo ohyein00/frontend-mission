@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "test": "vue-cli-service test:unit --watch --silent",
     "lint": "vue-cli-service lint",
-    "db:itemInfo": "json-server --watch db/itemInfo.json --port 10000"
+    "db:itemList": "json-server --watch db/itemList.json --port 10000"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

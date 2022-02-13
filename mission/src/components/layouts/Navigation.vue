@@ -2,15 +2,15 @@
   <div class="nav-wrapper">
     <nav class="nav-area">
       <ul class="nav-list">
-        <li v-for="nav in navItems" :key="nav.name"
-            @click="pushRouter(nav.path)"
+        <router-link tag="li" active-class="is-active" v-for="nav in navItems" :key="nav.name"
+            :to="nav.path"
             :class="{'is-active':name === nav.name}"
             class="nav-item">
           <div class="icon-area">
             <font-awesome-icon :icon="nav.icon"></font-awesome-icon>
           </div>
           <p>{{ nav.title }}</p>
-        </li>
+        </router-link>
 
       </ul>
     </nav>

@@ -32,7 +32,7 @@
         <PriceArea
           :price="itemInfo.price"
           :originalPrice="itemInfo.original_price"
-          size="medium"
+          size="detail"
         />
       </section>
     </div>

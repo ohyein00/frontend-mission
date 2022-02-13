@@ -15,3 +15,32 @@
   font-size: 14px;
   padding: 20px;
 }
+.flex-center{
+  display:flex;
+  align-items: center;
+}
+.flex-top{
+  display:flex;
+  align-items: normal;
+}
+
+/* button */
+
+button.basic{
+  border:1px solid #a3a3a3;
+  background:#fff;
+  color:#212121;
+  text-align:center;
+  font-size:16px;
+}
+button.size-ss{
+  width:25px;
+  height:25px;
+}
+
+/* input */
+
+input{
+  border:1px solid #a3a3a3;
+  background:#fff;
+}

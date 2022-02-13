@@ -6,9 +6,6 @@ export default {
   get() {
     return Client.get(`${resource}`);
   },
-  getInfo(id) {
-    return Client.get(`${resource}/${id}`);
-  },
   create(payload) {
     return Client.post(`${resource}`, payload);
   },

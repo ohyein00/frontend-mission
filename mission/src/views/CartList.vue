@@ -2,17 +2,18 @@
   <Header></Header>
   <div id="item-list-page">
     <h3 class="page-ttl">장바구니</h3>
-    <ul v-if="typeof cartList === 'object'" class="item-group">
+    <ul v-if="typeof cartList === 'object'" class="cart-item-group">
       <li v-for="item in cartList"
           :key="item.title"
           class="item-frame"
-          @click="pushRouter(`/item/${item.product_no}`)"
       >
-        <ItemComponent
+        <CartItem
           :title="item.name"
           :thumbNailUrl="item.image"
           :price="item.price"
           :originalPrice="item.original_price"
+
+          :productNo="item.product_no"
           data-test="item-component"/>
       </li>
     </ul>
@@ -20,12 +21,11 @@
       {{ cartList }}
     </p>
   </div>
-
   <Navigation :name="this.$route.name"/>
 </template>
 
 <script>
-import ItemComponent from '@/components/ItemList/Item.vue';
+import CartItem from '@/components/Cart/CartItem.vue';
 import Navigation from '@/components/layouts/Navigation.vue';
 import Header from '@/components/layouts/Header.vue';
 import { getCartList } from '@/composables/getItemData';
@@ -33,7 +33,7 @@ import { getCartList } from '@/composables/getItemData';
 export default {
   components: {
     Header,
-    ItemComponent,
+    CartItem,
     Navigation,
   },
   setup() {
@@ -62,16 +62,20 @@ export default {
   padding-bottom: 20px;
 }
 
-.item-group {
+.cart-item-group {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 5px;
+  padding: 0 10px;
   .img-area{
     border:1px solid #efefef;
     box-sizing: border-box;
   }
   .item-frame {
-    width: 50%;
+    width: 100%;
   }
 }
+.price-area {
+  margin: 5px 0
+}
+
 </style>
