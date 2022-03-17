@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import ItemListPage from '@/views/ItemList.vue';
-import Cart from '@/views/Cart.vue';
+import Cart from '@/views/CartList.vue';
 import WishList from '@/views/WishList.vue';
 import Mypage from '@/views/Mypage.vue';
 import ItemInfo from '@/views/ItemInfo.vue';
+import Order from '@/views/Order.vue';
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/item/:itemNo',
     name: 'item',
     component: ItemInfo,
+  },
+  {
+    path: '/order',
+    name: 'order',
+    component: Order,
   },
 ];
 
