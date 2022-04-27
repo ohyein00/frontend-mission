@@ -19,6 +19,7 @@ const cartModule = {
   },
   actions: {
     addCart({ commit }, product) {
+      // getApi
       commit('addNewCartItem', product);
     },
     increaseCart({ commit }, ItemIndex) {
@@ -28,7 +29,7 @@ const cartModule = {
       commit('decreaseCartItem', ItemIndex);
     },
     removeCart({ commit }, cartItemIndex) {
-      commit('removeCartList', cartItemIndex);
+      commit('removeCartList', cartItemIndex); d;
     }
     ,
   },

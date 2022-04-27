@@ -7,11 +7,6 @@ const ItemRepository = Repository.get('item');
 const WishRepository = Repository.get('wish');
 const CartRepository = Repository.get('cart');
 
-// 미션을 위한 itemList 추가
-let dummyData;
-axios.get('http://localhost:10000/items').then((res) => {
-  dummyData = res.data;
-});
 // 상품리스트
 
 export const axiosItemList = () => ItemRepository.get()
@@ -20,7 +15,6 @@ export const axiosItemList = () => ItemRepository.get()
 export const getItemList = () => {
   const itemList = ref('Loading');
   axiosItemList().then((data) => {
-    data.push(...dummyData);
     itemList.value = data;
   }).catch(() => {
     itemList.value = '상품을 찾을 수 없습니다';
